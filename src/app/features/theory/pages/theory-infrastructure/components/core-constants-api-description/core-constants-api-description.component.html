@@ -1,0 +1,18 @@
+<p>Voici un exemple de code qui se trouverait dans un fichier de constants <code>api</code>.</p>
+
+<textarea highlight-js [options]="{}" [lang]="'typescript'">
+export const API = {
+  USERS: '/users',
+  POSTS: '/posts',
+  COMMENTS: '/comments',
+  ALBUMS: '/albums',
+  PHOTOS: '/photos',
+  TODOS: '/todos',
+};
+</textarea>
+
+<p>Le fait de regroupé les constantes dans un fichier permet de les centraliser et de les réutiliser plus facilement.</p>
+<p>
+	De plus, si ces mêmes valeurs sont utilées à plusieurs endroits, il sera plus facile de modifié de uniquement modifié ce fichier plutôt
+	que tout les endroits où est utilisé cette valeur.
+</p>

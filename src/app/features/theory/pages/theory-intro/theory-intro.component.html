@@ -1,0 +1,154 @@
+<theory-header chapterName="Intro" />
+<section class="card-body">
+	<div class="card mx-auto">
+		<div class="card-header">
+			<h2>Commande de création du projet :</h2>
+		</div>
+		<div class="card-body">
+			<p>
+				<strong>Commande :</strong>
+				<code>ng new demo-angular --directory . --skip-tests</code>
+			</p>
+			<p>Où :</p>
+			<ol>
+				<li>
+					<p><strong>`ng new`</strong> : Initialise un nouveau projet Angular</p>
+				</li>
+				<li>
+					<p><strong>`demo-angular`</strong> : Nom du projet</p>
+				</li>
+				<li>
+					<p>
+						<strong>`--directory .`</strong> : Installe le projet dans le répertoire
+						actuel sans recréer un dossier supplémentaire
+					</p>
+				</li>
+				<li>
+					<p>
+						<strong>`--skip-tests`</strong> : Empêche la génération de fichiers de tests
+					</p>
+				</li>
+			</ol>
+		</div>
+
+		<div class="card-header">
+			<h2>Démarrer son serveur :</h2>
+		</div>
+		<div class="card-body">
+			<p>
+				<code>ng serve</code> : Démarre le serveur (le paramètre
+				<code>--o</code>
+				peut être ajouté pour ouvrir le projet sur une page web).
+			</p>
+		</div>
+	</div>
+
+	<hr />
+	<div class="card mx-auto">
+		<div class="card-header">
+			<h2>Le processus Ahead-of-time (AOT) :</h2>
+		</div>
+		<div class="card-body">
+			<p>
+				Technique de compilation utilisée par Angular pour améliorer les performances des
+				applications.
+			</p>
+			<p>
+				L'AOT compile l'application avant son exécution, convertissant le code Angular en
+				JavaScript optimisé avant que le navigateur ne le charge. Cela rend le chargement
+				initial plus rapide et réduit la taille des fichiers transmis au navigateur.
+			</p>
+			<p>
+				C'est aussi ce processus qui permet à l'application de se recharger automatiquement
+				à chaque modification sans devoir relancer le serveur.
+			</p>
+		</div>
+		<div class="card-header">
+			<h2>Analyse de l'arborescence initiale du projet :</h2>
+		</div>
+		<div class="card-body">
+			<ol>
+				<li>
+					<p>
+						<strong>`node_modules`</strong> : Contient tous les modules nécessaires au
+						framework
+					</p>
+				</li>
+				<li>
+					<p><strong>`src`</strong> : Contient le code de notre projet</p>
+				</li>
+				<li>
+					<p>
+						<strong>`angular.json`</strong> : Configuration de l'espace de travail du
+						projet
+					</p>
+					<ul>
+						<li>
+							<p>
+								C'est ici que tu trouveras les configurations définies lors de la
+								création du projet, comme
+								<code>--skip-tests</code>.
+							</p>
+						</li>
+					</ul>
+				</li>
+				<li>
+					<p>
+						<strong>`package.json`</strong> : Listes & versions des packages du projet
+					</p>
+				</li>
+				<li>
+					<p>
+						<strong>`tsconfig.json`</strong> : Configuration de la compilation
+						TypeScript
+					</p>
+				</li>
+			</ol>
+		</div>
+
+		<div class="card-header">
+			<h2>La programmation en Angular :</h2>
+		</div>
+		<div class="card-body">
+			<h3>1. Les différents paradigmes de programmation :</h3>
+			<p>Angular implémente trois paradigmes principaux de programmation :</p>
+			<ol>
+				<li>
+					<p><strong>Le paradigme orienté objet</strong></p>
+				</li>
+				<li>
+					<p><strong>Le paradigme fonctionnel</strong></p>
+				</li>
+				<li>
+					<p>
+						<strong>Le paradigme réactif</strong> : Angular adopte fortement le
+						paradigme réactif pour gérer les événements asynchrones, comme les requêtes
+						HTTP, les interactions utilisateur ou les changements d'état.
+					</p>
+					<ul>
+						<li>
+							<p>
+								Grâce à ce paradigme, les données deviennent réactives. Lorsqu'une
+								donnée change, toutes les parties du programme dépendant de cette
+								donnée sont mises à jour automatiquement.
+							</p>
+						</li>
+						<li>
+							<p>
+								Exemple : Lors d'un changement de données, l'interface utilisateur
+								se met à jour automatiquement, déclenchant des actions en fonction
+								des modifications.
+							</p>
+						</li>
+					</ul>
+				</li>
+			</ol>
+			<h3>2. L'architecture en Angular :</h3>
+			<p>
+				Angular est basé sur une architecture de composants. Chaque composant est une partie
+				de l'interface utilisateur qui peut être réutilisée et encapsulée dans un seul
+				élément.
+			</p>
+		</div>
+	</div>
+</section>

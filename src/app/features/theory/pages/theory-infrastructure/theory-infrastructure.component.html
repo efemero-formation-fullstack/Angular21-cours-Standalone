@@ -1,0 +1,86 @@
+<theory-header chapterName="Infrastructure" />
+<section class="card-body">
+	<p>
+		Dans ce chapitre, nous allons voir comment fonctionne l'infrastructure d'une application
+		Angular.
+	</p>
+	<article class="card">
+		<div class="card-header">
+			<h2>Introduction</h2>
+		</div>
+		<div class="card-body">
+			<p>Tout d'abord, il exist plusieurs type de structure de dossier.</p>
+			<p>
+				La structure de dossier que nous allons voir dans ce chapitre est la structure de
+				dossie qui fonctionne par fonctionnalité.
+			</p>
+		</div>
+		<div class="card-header">
+			<h2>Analyse</h2>
+		</div>
+		<div class="card-body d-flex justify-content-between">
+			<folder-structure class="w-50" [folderStructure]="folderStructure" />
+			<div class="w-50 border-start container">
+				@switch (interactingWith()) {
+					@case ("") {
+						<p>
+							Clique sur un
+							<span class="text-primary"
+								>dossier <span class="bi-info-circle"></span> ou fichier
+								<span class="bi-info-circle"></span
+							></span>
+							pour voir sa description.
+						</p>
+					}
+
+					@case ("src") {
+						<src-description />
+					}
+					@case ("src/app") {
+						<src-description />
+					}
+					@case ("src/app/core") {
+						<core-description />
+					}
+					@case ("src/app/core/models") {
+						<core-models-description />
+					}
+					@case ("src/app/core/models/user.model.ts") {
+						<core-models-user-description />
+					}
+					@case ("src/app/core/constants") {
+						<core-constants-description />
+					}
+					@case ("src/app/core/constants/api.constants.ts") {
+						<core-constants-api-description />
+					}
+					@case ("src/app/core/interceptors") {
+						<core-interceptors-description />
+					}
+					@case ("src/app/core/interceptors/jwt.interceptor.ts") {
+						<core-interceptors-jwt-description />
+					}
+					@case ("src/app/core/guards") {
+						<core-guards-description />
+					}
+					@case ("src/app/core/guards/connected.guard.ts") {
+						<core-guards-connected-description />
+					}
+					@case ("src/app/core/services") {
+						<core-services-description />
+					}
+					@case ("src/app/core/services/auth/auth.service.ts") {
+						<core-services-auth-description />
+					}
+					@default {
+						<p>
+							La description de <code> {{ interactingWith() }} </code> n'est pas
+							encore disponible...
+						</p>
+						<img [src]="imgUrlHuh" class="container-fluid" />
+					}
+				}
+			</div>
+		</div>
+	</article>
+</section>

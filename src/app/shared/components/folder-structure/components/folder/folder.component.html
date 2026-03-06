@@ -1,0 +1,43 @@
+<ul class="list-unstyled">
+	<li>
+		@if (isOpen) {
+			<span class="bi-caret-down" (click)="closeFolder()"></span>
+		} @else {
+			<span class="bi-caret-right" (click)="openFolder()"></span>
+		}
+
+		<span
+			[ngClass]="{
+				highlight: folder().isSelected,
+				'text-primary': folder().interaction,
+			}"
+			(click)="onElementClick(folder())"
+		>
+			<i class="m-1 {{ folder().bootstrapIcon || 'bi-folder' }}"></i>
+			&nbsp;{{ folder().name }} <span [ngClass]="{'bi-info-circle': folder().interaction}"></span>
+		</span>
+		@if (isOpen) {
+			<ul class="list-unstyled ms-3">
+				@for (file of folder().files; track $index) {
+					<li>
+						<span
+							(click)="onElementClick(file)"
+							[ngClass]="{
+								highlight: file.isSelected,
+								'text-primary': file.interaction,
+							}"
+						>
+							<i class="ms-2 {{ file.bootstrapIcon || 'bi-file-code' }}"></i>
+							&nbsp;{{ file.name }} <span [ngClass]="{'bi-info-circle': file.interaction}"></span>
+						</span>
+					</li>
+				}
+				@for (child of folder().children; track $index) {
+					<li class="ms-2">
+						<folder [folder]="child" [inputPath]="path + child.name" />
+					</li>
+				}
+			</ul>
+		}
+	</li>
+</ul>

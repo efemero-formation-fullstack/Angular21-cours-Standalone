@@ -1,0 +1,28 @@
+<p>Voici un exemple d'intercepteur</p>
+<i>vous en saurez plus une fois arriver au chapitre prévu à cette effet!</i>
+<textarea highlight-js [options]="{}" [lang]="'typescript'">
+import {HttpInterceptorFn} from '@angular/common/http';
+import {AuthService} from '../services/auth.service';
+import {inject} from '@angular/core';
+
+export const jwtInterceptor: HttpInterceptorFn = (req, next) => {
+    const authService: AuthService = inject(AuthService);
+
+    const user = authService.currentUser();
+
+    // vérifier si le user existe
+    if (user) {
+        // rajouter le access token du user dans la requête
+        const token = user.accessToken;
+
+        // ajouter Authorization dans les headers
+        const requestClone = req.clone({
+            headers: req.headers.append('Authorization', 'Bearer ' + token),
+        });
+
+        return next(requestClone);
+    }
+
+    return next(req);
+};
+</textarea>

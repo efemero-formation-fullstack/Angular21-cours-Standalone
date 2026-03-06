@@ -1,0 +1,44 @@
+<p>Les <strong>Services</strong> sont des classes qui permettent de centraliser la logique métier de votre application.</p>
+<i>vous en saurez plus une fois arriver au chapitre prévu à cette effet!</i>
+
+<textarea highlight-js [options]="{}" [lang]="'typescript'">
+import {inject, Injectable, signal, WritableSignal} from '@angular/core';
+import {HttpClient} from '@angular/common/http';
+import {Observable, tap} from 'rxjs';
+import {UserTokenDtoModel} from '../models/user-token-dto.model';
+import {AuthLoginCredentialsModel} from '../models/auth-login-credentials.model';
+
+@Injectable({
+  providedIn: 'root'
+})
+export class AuthService {
+  private readonly _httpClient: HttpClient = inject(HttpClient);
+
+  private readonly _currentUser: WritableSignal<UserTokenDtoModel | null> = signal(null);
+  currentUser$ = this._currentUser.asReadonly();
+
+
+  constructor() {
+    let jsonUser = localStorage.getItem('currentUser');
+    if (jsonUser) {
+      this._currentUser.set(JSON.parse(jsonUser));
+    }
+  }
+
+  login(credentials: AuthLoginCredentialsModel): Observable<UserTokenDtoModel> {
+    return this._httpClient.post<UserTokenDtoModel>('http://localhost:3000/signin', credentials)
+      .pipe(
+        tap((user: UserTokenDtoModel) => {
+          this._currentUser.set(user);
+          localStorage.setItem("currentUser", JSON.stringify(user));
+        })
+      );
+  }
+
+  logout() {
+    this._currentUser.set(null);
+    localStorage.removeItem("currentUser");
+  }
+}
+
+</textarea>

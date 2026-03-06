@@ -1,0 +1,21 @@
+<p>Voici un exemple de guard</p>
+<i>vous en saurez plus une fois arriver au chapitre prévu à cette effet!</i>
+
+<textarea highlight-js [options]="{}" [lang]="'typescript'">
+import {CanActivateFn, Router} from '@angular/router';
+import {AuthService} from '../services/auth.service';
+import {inject} from '@angular/core';
+
+export const connectedGuard: CanActivateFn = (route, state) => {
+  const authService: AuthService = inject(AuthService);
+  const router: Router = inject(Router);
+
+  if(authService.currentUser()){
+    return true;
+  }
+
+  // si pas connecter : rediriger vers la page de login
+  return router.navigate(['/auth/login']);
+};
+
+</textarea>

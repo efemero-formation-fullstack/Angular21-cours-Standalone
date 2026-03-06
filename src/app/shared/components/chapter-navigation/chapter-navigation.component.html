@@ -1,0 +1,72 @@
+@if (currentIndex() != null) {
+	<div class="d-flex justify-content-center">
+		<a
+			class="btn m-1"
+			[ngClass]="{
+				'btn-primary': previousChapter() != null,
+				'btn-secondary': previousChapter() == null,
+				disabled: previousChapter() == null,
+			}"
+			[routerLink]="['/', NAV_THEORY, previousChapter()]"
+		>
+			{{ previousChapter() != null ? previousChapterName() : "⛔" }}⬅️
+		</a>
+
+		@if (currentCategory() !== ChapterTDE.theory) {
+			<a
+				class="btn m-1"
+				[ngClass]="{
+					'btn-info': hasTheory,
+					'btn-secondary': !hasTheory,
+					disabled: !hasTheory,
+				}"
+				[routerLink]="['/', NAV_THEORY, currentIndex()]"
+			>
+				<span>📚</span>
+				Theory
+			</a>
+		}
+
+		@if (currentCategory() !== ChapterTDE.demo) {
+			<a
+				class="btn m-1"
+				[ngClass]="{
+					'btn-warning': hasDemo,
+					'btn-secondary': !hasDemo,
+					disabled: !hasDemo,
+				}"
+				[routerLink]="['/', NAV_DEMO, currentIndex()]"
+			>
+				<span>🎮</span>
+				Demo
+			</a>
+		}
+
+		@if (currentCategory() !== ChapterTDE.exercise) {
+			<a
+				class="btn m-1"
+				[ngClass]="{
+					'btn-success': hasExercise,
+					'btn-secondary': !hasExercise,
+					disabled: !hasExercise,
+				}"
+				[routerLink]="['/', NAV_EXERCISE, currentIndex()]"
+			>
+				<span>🏋️</span>
+				Exercise
+			</a>
+		}
+
+		<a
+			class="btn m-1"
+			[ngClass]="{
+				'btn-primary': nextChapter() != null,
+				'btn-secondary': nextChapter() == null,
+				disabled: nextChapter() == null,
+			}"
+			[routerLink]="['/', NAV_THEORY, nextChapter()]"
+		>
+			{{ nextChapter() != null ? nextChapterName() : "⛔" }}➡️
+		</a>
+	</div>
+}
